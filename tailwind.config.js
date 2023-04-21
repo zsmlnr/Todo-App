@@ -18,10 +18,19 @@ module.exports = {
                 montserrat:['Montserrat']
             },
             backgroundImage:{
-                'auth-bg':"url(/public/assets/background/Looper.png)"
+                'auth-bg':"url(/public/assets/background/Looper.png)",
+                'hero-bg':"url(/public/assets/background/Hero-Image.png)"
             },
             colors:{
                 'box':'#FFFFFF',
+                'high-priority':'#f43f5e',
+                'medium-priority':'#facc15',
+                'normal-priority':'#34d399',
+                'low-priority':'#8AAFF5',
+                
+            },
+            backgroundSize:{
+                '40%': '40%',
             }
         },
     },

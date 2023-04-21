@@ -9,23 +9,18 @@
             <ul class="menu p-4 w-80 bg-base-100">
                 <!-- Sidebar content here -->
                 <li>
-                    <a href="#product">Product</a>
+                    <Link :href="route('login')">Login</Link>
                 </li>
                 <li>
-                    <a href="#advanteges">Advanteges</a>
-                </li>
-                <li>
-                    <a href="#contact">Contact</a>
+                    <Link :href="route('signup')">Sign Up</Link>
                 </li>
 
             </ul>
         </div>
     </div>
 </template>
-<script>
-export default {
-
-}
+<script setup>
+import { Link } from '@inertiajs/vue3';
 </script>
 <style lang="">
     

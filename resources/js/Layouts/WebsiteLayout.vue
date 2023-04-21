@@ -1,5 +1,5 @@
 <template lang="">
-    <Drawer>
+    <Drawer class="bg-neutral">
         <Navbar/>
         <slot></slot>
         <Footer/>

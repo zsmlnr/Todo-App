@@ -10,7 +10,8 @@
         <div
             class="w-full hidden lg:flex flex-col justify-between lg:w-1/2 bg-black bg-auth-bg bg-auto bg-no-repeat bg-center min-h-screen p-14">
             <div>
-                <h2 class="text-white text-xl font-orbitron uppercase opacity"><a :href="route('home')">Youdoo</a>
+                <h2 class="text-white text-xl font-orbitron uppercase opacity">
+                    <Link :href="route('home')">Youdoo</Link>
                 </h2>
             </div>
             <div class="text-white font-orbitron font-bold text-6xl w-full flex justify-center">
@@ -35,14 +36,18 @@
 </template>
 <script>
 import SplitType from 'split-type';
+import { Link } from '@inertiajs/vue3';
 import gsap from 'gsap';
 export default {
+    components: {
+        Link
+    },
     mounted() {
         const brand = new SplitType('#bannerText');
         gsap.to(".word", {
             y: 0,
             stagger: 0.05,
-            duration: 1
+            duration: .5
         })
         gsap.to(".opacity", {
             opacity: 1,

@@ -11,6 +11,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'daisyui';
 import 'flowbite';
 import 'vue-chartjs';
+import Alpine from 'alpinejs';
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';

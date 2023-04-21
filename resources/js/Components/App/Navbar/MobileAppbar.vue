@@ -7,14 +7,14 @@
                 </Link>
             </li>
             <li class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-20">
-                <button type="button"
+                <Link :href="route('addTask')" type="button"
                     class="font-montserrat font-bold flex items-center gap-1 border border-transparent bg-box p-3  rounded-full active:border-primary active:bg-primary active:bg-opacity-50 hover:bg-background hover:scale-105 transition-all">
-                    <i class="fa-solid fa-circle-plus text-primary text-7xl"></i>
-                </button>
+                <i class="fa-solid fa-circle-plus text-primary text-7xl"></i>
+                </Link>
             </li>
             <li>
-                <Link>
-                <i class="fa-solid fa-users" :class="{ 'text-text': $page.url === '/team' }"></i>
+                <Link :href="route('board')">
+                <i class="fa-solid fa-list-check" :class="{ 'text-primary': $page.url === '/board' }"></i>
                 </Link>
             </li>
         </ul>

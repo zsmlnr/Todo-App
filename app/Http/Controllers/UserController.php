@@ -6,6 +6,7 @@ use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -78,5 +79,56 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('home');
+    }
+    //Profile Page
+    public function profile()
+    {
+        return Inertia::render('User/Profile');
+    }
+    public function updateEmail(Request $request)
+    {
+        $form = $request->validate([
+            'currentEmail' => 'required',
+            'email' => 'required'
+        ]);
+        $user = Auth::user();
+        $user->email = $form['email'];
+        $user->save();
+
+        return redirect()->back()->with('mesage', 'E-Mail updated succesful!');
+    }
+    public function updatePassword(Request $request)
+    {
+        $user = $request->user();
+
+        $validatedData = $request->validate([
+            'currentPassword' => 'required',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        if (!Hash::check($validatedData['currentPassword'], $user->password)) {
+            return redirect()->back()->withErrors([
+                'currentPassword' => 'The current password you entered is incorrect.',
+            ]);
+        }
+
+        $user->password = Hash::make($validatedData['password']);
+        $user->save();
+
+        return redirect()->back()->with('message', 'Password updated successfully.');
+    }
+    public function updatePicture(Request $request)
+    {
+        $request->validate([
+            'src' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        $user = auth()->user();
+        if ($request->hasFile('src')) {
+            $profilePic = $request->file('src')->store('avatars', 'public');
+            $user->profile_pic = $profilePic;
+            $user->save();
+        }
+
+        return redirect()->back()->with('message', 'Profile picture updated');
     }
 }
